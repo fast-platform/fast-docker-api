@@ -3,7 +3,7 @@
   "mongoSecret": "MONGO_SECRET",
   "jwt": {
     "secret": "JWT_SECRET",
-    "expireTime": "JWT_EXPIRETIME"
+    "expireTime": "JWT_EXPIRE_TIME"
   },
   "email": {
     "type": "EMAIL_TYPE",
