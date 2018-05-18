@@ -2,7 +2,7 @@
 FROM mhart/alpine-node:6
 
 # Intsall dependencies
-RUN apk add --no-cache openrc make gcc g++ python nginx git ca-certificates wget
+RUN apk add --no-cache make gcc g++ python nginx git ca-certificates wget
 
 # Fix missing directories in alpine for nginx
 RUN mkdir -p /tmp/nginx/client-body && mkdir -p /run/nginx
