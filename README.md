@@ -15,7 +15,7 @@ docker network create <network_name>                        # create external ne
 docker-compose up -d                                        # fire-up the docker container
 ```
 
-### Environment Configuration
+## Environment Configuration
 
 The file `template.env` is provided as template for setting up the environment variables.  Once ready, save it as `.env` to build the docker image.
 
@@ -41,6 +41,28 @@ These are some of the environment variables available for configuring the docker
 | EMAIL_KEY | The mandrill apiKey string. | `mandrill-key` |
 | EMAIL_OVERRIDE | Provides a way to point all Email traffic to a server (ignores all other email configurations). | `{"transport":"smtp","settings":{"port":2525,"host":"smtp.mailtrap.io","auth":{"user":"23esdffd53ac","pass":"324csdfsdf989a"}}}` |
 
+
+## Project Templates
+
+To include a custom project template, save it on the [templates](templates) directory using the following naming convention: `project.<id>.json` (e.g.: `project.basic.json`).  To install a specific template, set the `PROJECT_TEMPLATE` value to the templates `<id>`.  The `default` id is reserved for Form.io's [default project template](https://github.com/formio/formio-app-formio/blob/master/dist/project.json). All projects templates should use Form.io's Project JSON Schema.
+
+###### Example
+
+You may have multiple project templates in your `templates` directory.
+
+```
+--- templates
+    |--- project.basic.json
+    |--- project.full.json
+```
+
+Then on your `.env` file you just need to specify which template to use:
+
+```
+PROJECT_TEMPLATE=full
+```
+
+If the mongodb database defined in the mongo connection string does not exist, then a new project will be initialized using the given project template.
 
 ## Authors
 
