@@ -1,5 +1,5 @@
 # Use alpine-node image with nodejs v8
-FROM mhart/alpine-node:6
+FROM mhart/alpine-node:8
 
 # Intsall dependencies
 RUN apk add --no-cache make gcc g++ python nginx git ca-certificates openssl wget
@@ -12,6 +12,9 @@ RUN git clone https://github.com/formio/formio.git /src/formio
 
 # Define the working directory
 WORKDIR /src/formio
+
+# Downgrade npm (https://github.com/npm/npm/issues/19989#issuecomment-372155119)
+RUN npm install -g npm@5.6.0
 
 # Install packages
 RUN npm install
