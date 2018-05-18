@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  formio-api:
+    image: fast/formio-api
+    build: .
+    env_file:
+      - ./.env
+    ports:
+      - '3001:3001'
+      - '8443:443'
+    networks:
+      - formio
+    restart: unless-stopped
+
+networks:
+  formio:
+    
