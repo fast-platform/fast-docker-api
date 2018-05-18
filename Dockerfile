@@ -2,7 +2,7 @@
 FROM mhart/alpine-node:6
 
 # Intsall dependencies
-RUN apk add --no-cache make gcc g++ python nginx git ca-certificates wget
+RUN apk add --no-cache make gcc g++ python nginx git ca-certificates openssl wget
 
 # Fix missing directories in alpine for nginx
 RUN mkdir -p /tmp/nginx/client-body && mkdir -p /run/nginx
@@ -32,6 +32,9 @@ COPY scripts/* ./
 # Copy nginx configuration and ssl certificate directory
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY ssl /etc/nginx/ssl
+
+# Generate Diffie-Hellman parameters
+RUN openssl dhparam -out /etc/nginx/ssl/dhparam.pem 2048
 
 # Clean-up
 RUN rm -rf /var/cache/apk/*
