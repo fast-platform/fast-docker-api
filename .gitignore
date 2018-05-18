@@ -1,1 +1,10 @@
+# Environment Variables
 .env
+
+# SSL Certificates
+ssl/*.pem
+ssl/*.key
+ssl/*.cer
+
+# Include dev SSL Certificate
+!ssl/*.dev.pem
