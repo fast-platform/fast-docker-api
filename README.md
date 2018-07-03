@@ -12,7 +12,6 @@ To start using this docker container just clone the repository and build it usin
 git clone https://github.com/un-fao/fast-docker-api.git       # clone the repository
 cd ./fast-docker-api
 cp env-example ./.env                                         # modify and save the .env file
-docker network create <network_name>                          # create external network (formio by default)
 docker-compose up -d mongo formio portainer opencpu netdata   # fire-up the docker container
 ```
 
