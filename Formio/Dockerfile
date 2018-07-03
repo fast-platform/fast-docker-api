@@ -1,7 +1,7 @@
 # Use alpine-node image with nodejs v8
 FROM mhart/alpine-node:8
 
-# Intsall dependencies
+# Install dependencies
 RUN apk add --no-cache make gcc g++ python nginx git ca-certificates openssl wget
 
 # Fix missing directories in alpine for nginx
@@ -41,5 +41,7 @@ RUN openssl dhparam -out /etc/nginx/ssl/dhparam.pem 2048
 
 # Clean-up
 RUN rm -rf /var/cache/apk/*
+
+EXPOSE 443 8443
 
 CMD [ "sh", "./start.sh"]

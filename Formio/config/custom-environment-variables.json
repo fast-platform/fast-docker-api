@@ -1,5 +1,5 @@
 {
-  "mongo": "MONGO",
+  "mongo": "MONGO_CONNECTION",
   "mongoSecret": "MONGO_SECRET",
   "jwt": {
     "secret": "JWT_SECRET",

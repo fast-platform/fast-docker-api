@@ -1,5 +1,4 @@
 'use strict';
-
 /**
  * This is the Form.io application server.
  */
