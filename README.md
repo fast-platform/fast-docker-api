@@ -55,10 +55,10 @@ These are some of the environment variables available for configuring the [Form.
 ##### What you get
 
 After the default deploy you will get Form.io Community running on port 3001 (http)
-![alt text](https://www.dropbox.com/s/o4k5t7naupw22kt/Screenshot%202018-07-19%2014.55.52.png?dl=1 'Form.io form builder')
+![alt text](https://dl.dropboxusercontent.com/s/o4k5t7naupw22kt/Screenshot%202018-07-19%2014.55.52.png?dl=1 'Form.io form builder')
 
 And you will have full access to the Form.io API as usual
-![alt text](https://www.dropbox.com/s/dnk1p6rm1xs7nc1/Screenshot%202018-07-19%2014.56.46.png?dl=1 'Form.io API')
+![alt text](https://dl.dropboxusercontent.com/s/dnk1p6rm1xs7nc1/Screenshot%202018-07-19%2014.56.46.png?dl=1 'Form.io API')
 
 ### MONGODB
 
@@ -74,7 +74,7 @@ And you will have full access to the Form.io API as usual
 ##### What you get
 
 After the default deploy you will have MongoDB running on your localhost and port 27017
-![alt text](https://www.dropbox.com/s/nnlwunjuedtn8f4/Screenshot%202018-07-19%2014.53.10.png?dl=1 'MongoDB up and running')
+![alt text](https://dl.dropboxusercontent.com/s/nnlwunjuedtn8f4/Screenshot%202018-07-19%2014.53.10.png?dl=1 'MongoDB up and running')
 
 ### OpenCpu
 
@@ -88,7 +88,7 @@ After the default deploy you will have MongoDB running on your localhost and por
 After the default deploy you will have OpenCpu running on port 8085.
 
 You will be able to access the OpenCpu test api using localhost:8085/ocpu
-![alt text](https://www.dropbox.com/s/o90hwvzw0sppq9x/Screenshot%202018-07-19%2014.55.17.png?dl=1 'OpenCpu test api')
+![alt text](https://dl.dropboxusercontent.com/s/o90hwvzw0sppq9x/Screenshot%202018-07-19%2014.55.17.png?dl=1 'OpenCpu test api')
 
 Or directly access the OpenCpu Rstudio implementation localhost:8085/rstudio
 Remember that the default credentials for OpenCpu are:
@@ -100,7 +100,7 @@ password: opencpu
 
 Don´t forget to change them!
 
-![alt text](https://www.dropbox.com/s/o4k5t7naupw22kt/Screenshot%202018-07-19%2014.55.52.png?dl=1 'OpenCpu RStudio')
+![alt text](https://dl.dropboxusercontent.com/s/o4k5t7naupw22kt/Screenshot%202018-07-19%2014.55.52.png?dl=1 'OpenCpu RStudio')
 
 ### NetData
 
@@ -111,7 +111,7 @@ Don´t forget to change them!
 ##### What you get
 
 Want to see how your machine is performing? No problem just access Netdata on localhost:19999
-![alt text](https://www.dropbox.com/s/9i1nryvmvpp99jr/Screenshot%202018-07-19%2014.52.44.png?dl=1 'NetData')
+![alt text](https://dl.dropboxusercontent.com/s/9i1nryvmvpp99jr/Screenshot%202018-07-19%2014.52.44.png?dl=1 'NetData')
 
 ### Portainer
 
@@ -122,7 +122,7 @@ Want to see how your machine is performing? No problem just access Netdata on lo
 ##### What you get
 
 Want to check your full docker-compose cluster status? Go to Portainer localhost:9000
-![alt text](https://www.dropbox.com/s/79jqvz8bjtna399/Screenshot%202018-07-19%2014.52.25.png?dl=1 'Portainer')
+![alt text](https://dl.dropboxusercontent.com/s/79jqvz8bjtna399/Screenshot%202018-07-19%2014.52.25.png?dl=1 'Portainer')
 
 ## Project Templates
 
