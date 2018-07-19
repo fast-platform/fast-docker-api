@@ -110,6 +110,21 @@ password: opencpu
 
 Don´t forget to change them!
 
+#### Installing packages while running
+
+If you didn't install all the packages you need while deploying the container, you can install them at any time by accessing the container
+
+```
+docker exec -i -t <container_id_or_name>  /bin/bash
+R -e 'install.packages(c("package1", "package2"))'
+```
+
+Or from outside
+
+```
+docker exec -it <container_id_or_name> echo "R -e 'install.packages(c("package1", "package2"))'"
+```
+
 ![alt text](https://dl.dropboxusercontent.com/s/o4k5t7naupw22kt/Screenshot%202018-07-19%2014.55.52.png?dl=1 'OpenCpu RStudio')
 
 ### NetData
