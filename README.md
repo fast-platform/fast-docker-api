@@ -55,7 +55,7 @@ These are some of the environment variables available for configuring the [Form.
 ##### What you get
 
 After the default deploy you will get Form.io Community running on port 3001 (http)
-![alt text](https://dl.dropboxusercontent.com/s/o4k5t7naupw22kt/Screenshot%202018-07-19%2014.55.52.png?dl=1 'Form.io form builder')
+![alt text](https://dl.dropboxusercontent.com/s/8lrz1p4drzsm0pj/Screenshot%202018-07-19%2014.52.00.png?dl=1 'Form.io form builder')
 
 And you will have full access to the Form.io API as usual
 ![alt text](https://dl.dropboxusercontent.com/s/dnk1p6rm1xs7nc1/Screenshot%202018-07-19%2014.56.46.png?dl=1 'Form.io API')
