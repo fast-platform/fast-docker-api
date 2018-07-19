@@ -17,8 +17,7 @@ services:
     env_file:
       - ./.env
     ports:
-      - '${FORMIO_API_PORT}:443'
-      - '${FORMIO_APP_PORT}:8443'
+      - '${FORMIO_PORT}:3001'
     restart: unless-stopped
     networks:
       - backend

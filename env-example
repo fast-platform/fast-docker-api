@@ -28,22 +28,50 @@ VOLUMES_DRIVER=local
 # Form.io Project Configurations
 ##########################################################################################
 #
-# - PROJECT_TEMPLATE:         The project template to use (leave empty or use 
-#                             default to us default Form.io template).
-# - ROOT_UERNAME:             The default root account username used when
+# - FORMIO_PROTOCOL:          The protocol used to connect to the formio
+#                             container (default = http).
+#
+# - FORMIO_HOST:              The host used to connect to the formio 
+#                             container (default = localhost).
+#                            
+# - FORMIO_PORT:              The port used to connect to the formio 
+#                             container (listening port)
+#
+# - PROJECT_TEMPLATE:         The project template to use 
+#                             (leave empty or use default to us default Form.io template).
+#
+# - ROOT_UERNAME:             The default root account username used 
+#                             when installing the Form.io API.
+#
+# - ROOT_PASSWORD:            The default root account password used when 
 #                             installing the Form.io API.
-# - ROOT_PASSWORD:            The default root account password used when
-#                             installing the Form.io API.
-# - API_PORT:                 The port for connecting to the API Server (https)
 #
 ##########################################################################################
 
-FORMIO_API_PORT=9443
-FORMIO_APP_PORT=8443
+FORMIO_PROTOCOL=http
+FORMIO_HOST=localhost
+FORMIO_PORT=3001
 PROJECT_TEMPLATE=default
+USER_FORM=user
+USER_LOGIN_FORM=
 ROOT_EMAIL=admin@example.com
-ROOT_PASSWORD=CHANGEME
+ROOT_PASSWORD=admin@example.com
 
+##########################################################################################
+# FORM.IO MongoDB Configurations
+##########################################################################################
+#
+# - MONGO:                    The mongodb connection string.
+# - MONGO_SECRET:             The mongodb encryption secret.
+# - MONGO_HIGH_AVAILABILITY:  If your database is high availability
+#                             (like from Mongo Cloud or Compose),
+#                             then this needs to be set (1 or 0).
+#
+##########################################################################################
+
+MONGO=mongodb://user:user@mongo:27017/fast
+MONGO_SECRET=FTFaVuIdSv4Hj2bjnwae
+MONGO_HIGH_AVAILABILITY=0
 
 ##########################################################################################
 # JWT Configurations
@@ -160,24 +188,6 @@ MONGO_ROOT_PASSWORD=admin
 MONGO_DB_USER=user
 MONGO_DB_PASSWORD=user
 MONGO_DB_NAME=fast
-
-
-##########################################################################################
-# FORM.IO MongoDB Configurations
-##########################################################################################
-#
-# - MONGO:                    The mongodb connection string.
-# - MONGO_SECRET:             The mongodb encryption secret.
-# - MONGO_HIGH_AVAILABILITY:  If your database is high availability
-#                             (like from Mongo Cloud or Compose),
-#                             then this needs to be set.
-#
-##########################################################################################
-
-MONGO_CONNECTION=mongodb://user:user@mongo:27017/fast
-MONGO_SECRET=FTFaVuIdSv4Hj2bjnwae
-MONGO_HIGH_AVAILABILITY=0
-
 
 ##########################################################################################
 # OpenCpu Configurations

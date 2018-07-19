@@ -1,5 +1,8 @@
 {
-  "mongo": "MONGO_CONNECTION",
+  "protocol": "FORMIO_PROTOCOL",
+  "appHost": "FORMIO_HOST",
+  "appPort": "FORMIO_PORT",
+  "mongo": "MONGO",
   "mongoSecret": "MONGO_SECRET",
   "jwt": {
     "secret": "JWT_SECRET",
@@ -51,6 +54,17 @@
           "pass": "SMTP_PASS"
         }
       }
+    }
+  },
+  "project": {
+    "template": "PROJECT_TEMPLATE",
+    "user": {
+      "form": "USER_FORM",
+      "loginForm": "USER_LOGIN_FORM"
+    },
+    "root": {
+      "email": "ROOT_EMAIL",
+      "password": "ROOT_PASS"
     }
   }
 }

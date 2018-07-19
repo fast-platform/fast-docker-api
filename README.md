@@ -19,18 +19,29 @@ docker-compose up -d mongo formio portainer opencpu netdata   # fire-up the dock
 
 The file `env-example` is provided as template for setting up the environment variables. Once ready, save it as `.env` to start the full stack
 
-##### Docker Configuration
+### Docker Configuration
 
 These are some of the environment variables available for configuring the [Form.io](https://form.io) docker container. Check [env-example](env-example). For more examples check the [custom-environment-variables.json](config/custom-environment-variables.json) to see how they map themselves into the API server configuration.
 
+##### Docker
+
+| Setting         | Description                                           | Example  |
+| --------------- | ----------------------------------------------------- | -------- |
+| DATA_PATH_HOST  | Storage path on your machine. For all storage systems | `./data` |
+| NETWORKS_DRIVER | The docker network to attach the container            | `bridge` |
+| VOLUMES_DRIVER  | The volume to attach the containers                   | `local`  |
+
+##### Formio
+
 | Setting                 | Description                                                                                          | Example                                                                                                                          |
 | ----------------------- | ---------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| NETWORK                 | The docker external network to attach the container.                                                 | `formio`                                                                                                                         |
-| API_PORT                | The port for accessing the API server.                                                               | `8443`                                                                                                                           |
-| PROJECT_TEMPLATE        | The project template variation to use (leave empty for default template).                            | `default`                                                                                                                        |
-| ROOT_EMAIL              | The default root account email used when installing the Form.io API server.                          | `admin@example.com`                                                                                                              |
-| ROOT_PASSWORD           | The default root account password used when installing the Form.io API server.                       | `admin.123`                                                                                                                      |
-| MONGO_CONNECTION        | The MongoDB connection string to connect to your remote database.                                    | `mongodb://user:user@mongo:27017/fast`                                                                                           |
+| FORMIO_PROTOCOL         | The protocol used to connect to the formio container (default = http)                                | `http`                                                                                                                           |
+| FORMIO_HOST             | The host used to connect to the formio container (default = localhost)                               | `localhost`                                                                                                                      |
+| FORMIO_PORT             | The port used to connect to the formio container (listening port)                                    | `3001`                                                                                                                           |
+| PROJECT_TEMPLATE        | The project template to use # (leave empty or use default to us default Form.io template).           | `default`                                                                                                                        |
+| ROOT_EMAIL              | The default root account username used when installing the Form.io API.                              | `admin@example.com`                                                                                                              |
+| ROOT_PASS               | The default root account password used when installing the Form.io API.                              | `admin@example.com`                                                                                                              |
+| MONGO                   | The MongoDB connection string to connect to your remote database.                                    | `mongodb://user:user@mongo:27017/fast`                                                                                           |
 | MONGO_SECRET            | The database encryption secret.                                                                      | `FTFaVuIdSv4Hj2bjnwae`                                                                                                           |
 | MONGO_HIGH_AVAILABILITY | If your database is high availability (like from Mongo Cloud or Compose), then this needs to be set. | `1`                                                                                                                              |
 | JWT_SECRET              | The secret password for JWT token encryption.                                                        | `YilQ9E1wOiITdWOeaMCL`                                                                                                           |
@@ -40,6 +51,30 @@ These are some of the environment variables available for configuring the [Form.
 | EMAIL_PASS              | The sendgrid api_key string.                                                                         | `sendgrid-pass`                                                                                                                  |
 | EMAIL_KEY               | The mandrill apiKey string.                                                                          | `mandrill-key`                                                                                                                   |
 | EMAIL_OVERRIDE          | Provides a way to point all Email traffic to a server (ignores all other email configurations).      | `{"transport":"smtp","settings":{"port":2525,"host":"smtp.mailtrap.io","auth":{"user":"23esdffd53ac","pass":"324csdfsdf989a"}}}` |
+
+##### MONGODB
+
+| Setting             | Description                                 | Example |
+| ------------------- | ------------------------------------------- | ------- |
+| MONGO_PORT          | Port to start the mongodb service.          | `27017` |
+| MONGO_ROOT_USERNAME | Name of the root (admin) user               | `admin` |
+| MONGO_ROOT_PASSWORD | Password of the root (admin) user           | `admin` |
+| MONGO_DB_NAME       | Name of the database to create              | `fast`  |
+| MONGO_DB_USER       | Name of the main user of the created DB     | `user`  |
+| MONGO_DB_PASSWORD   | Password of the main user of the created DB | `user`  |
+
+##### OpenCpu
+
+| Setting            | Description           | Example |
+| ------------------ | --------------------- | ------- |
+| OPENCPU_PORT_HTTP  | The OpenCpu http port | `8085`  |
+| OPENCPU_PORT_HTTPS | The OpenCpu http port | `8086`  |
+
+##### NetData
+
+| Setting      | Description      | Example |
+| ------------ | ---------------- | ------- |
+| NETDATA_PORT | The NetData port | `19999` |
 
 ## Project Templates
 
@@ -62,6 +97,15 @@ PROJECT_TEMPLATE=full
 ```
 
 If the mongodb database defined in the mongo connection string does not exist, then a new project will be initialized using the given project template.
+
+## Changing the Dockerfiles
+
+If you want to manually apply changes to one of the Dockerfiles dont forget to
+manually build the image using: docker-compose build <name-of-the-image>
+
+```
+docker-compose build formio
+```
 
 ## Authors
 

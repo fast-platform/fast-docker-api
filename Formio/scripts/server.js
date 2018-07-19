@@ -1,9 +1,10 @@
 'use strict';
+
 /**
  * This is the Form.io application server.
  */
-const process = require('process');
 const express = require('express');
+const nunjucks = require('nunjucks');
 const fs = require('fs-extra');
 const util = require('./src/util/util');
 require('colors');
@@ -16,16 +17,16 @@ module.exports = function(options) {
 
   util.log('');
   const rl = require('readline').createInterface({
-    input: require('fs').createReadStream('logo.txt')
+    input: require('fs').createReadStream('logo.txt'),
   });
 
   rl.on('line', function(line) {
     util.log(
-      line.substring(0,4) +
-      line.substring(4, 30).cyan.bold +
-      line.substring(30, 33) +
-      line.substring(33, 42).green.bold +
-      line.substring(42)
+      line.substring(0, 4) +
+        line.substring(4, 30).cyan.bold +
+        line.substring(30, 33) +
+        line.substring(33, 42).green.bold +
+        line.substring(42),
     );
   });
 
@@ -41,10 +42,14 @@ module.exports = function(options) {
   // Use the given config.
   const config = options.config || require('config');
 
-  // Mount the client application.
-  app.get('/', function(req, res) {
-    res.send('ok\n');
+  // Configure nunjucks.
+  nunjucks.configure('client', {
+    autoescape: true,
+    express: app,
   });
+
+  // Mount the client application.
+  app.use('/', express.static(`${__dirname}/client/dist`));
 
   // Load the form.io server.
   const server = options.server || require('./index')(config);
@@ -54,7 +59,6 @@ module.exports = function(options) {
   server.init(hooks).then(function(formio) {
     // Called when we are ready to start the server.
     const start = function() {
-
       // Mount the Form.io API platform.
       app.use(options.mount || '/', server);
 
@@ -64,27 +68,36 @@ module.exports = function(options) {
       // Listen on the configured port.
       return q.resolve({
         server: app,
-        config: config
+        config: config,
       });
     };
 
     // Which items should be installed.
     const install = {
-      download: false,
+      configure: false,
       import: false,
-      user: false
+      user: false,
     };
+
+    // If not a test, reconfigure client (required for port updates)
+    if (!test) {
+      install.configure = true;
+    }
 
     // See if they have any forms available.
     formio.db.collection('forms').count(function(err, numForms) {
-      // If there are forms, then go ahead and start the server.
-      if ((!err && numForms > 0) || test) {
-        return start();
-      }
-
       // Import the project and create the user.
       install.import = true;
       install.user = true;
+
+      // If there are forms, then go ahead and start the server.
+      if ((!err && numForms > 0) || test) {
+        install.import = false;
+        install.user = false;
+        if (!install.configure) {
+          return start();
+        }
+      }
 
       // Install.
       require('./install')(formio, install, function(err) {
