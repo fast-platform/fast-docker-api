@@ -38,7 +38,7 @@ These are some of the environment variables available for configuring the [Form.
 | FORMIO_PROTOCOL         | The protocol used to connect to the formio container (default = http)                                | `http`                                                                                                                           |
 | FORMIO_HOST             | The host used to connect to the formio container (default = localhost)                               | `localhost`                                                                                                                      |
 | FORMIO_PORT             | The port used to connect to the formio container (listening port)                                    | `3001`                                                                                                                           |
-| PROJECT_TEMPLATE        | The project template to use # (leave empty or use default to us default Form.io template).           | `default`                                                                                                                        |
+| PROJECT_TEMPLATE        | The project template to use (leave empty or use default to use default Form.io template).            | `default`                                                                                                                        |
 | ROOT_EMAIL              | The default root account username used when installing the Form.io API.                              | `admin@example.com`                                                                                                              |
 | ROOT_PASS               | The default root account password used when installing the Form.io API.                              | `admin@example.com`                                                                                                              |
 | MONGO                   | The MongoDB connection string to connect to your remote database.                                    | `mongodb://user:user@mongo:27017/fast`                                                                                           |
@@ -74,6 +74,15 @@ And you will have full access to the Form.io API as usual
 ##### What you get
 
 After the default deploy you will have MongoDB running on your localhost and port 27017
+
+```
+server: localhost
+port: 27017
+username: user
+password: user
+DB: fast
+```
+
 ![alt text](https://dl.dropboxusercontent.com/s/nnlwunjuedtn8f4/Screenshot%202018-07-19%2014.53.10.png?dl=1 'MongoDB up and running')
 
 ### OpenCpu
@@ -91,6 +100,7 @@ You will be able to access the OpenCpu test api using localhost:8085/ocpu
 ![alt text](https://dl.dropboxusercontent.com/s/o90hwvzw0sppq9x/Screenshot%202018-07-19%2014.55.17.png?dl=1 'OpenCpu test api')
 
 Or directly access the OpenCpu Rstudio implementation localhost:8085/rstudio
+
 Remember that the default credentials for OpenCpu are:
 
 ```
@@ -117,11 +127,11 @@ Want to see how your machine is performing? No problem just access Netdata on lo
 
 | Setting        | Description        | Example |
 | -------------- | ------------------ | ------- |
-| PORTAINER_PORT | The Portainer port | `9000`  |
+| PORTAINER_PORT | The Portainer port | `9010`  |
 
 ##### What you get
 
-Want to check your full docker-compose cluster status? Go to Portainer localhost:9000
+Want to check your full docker-compose cluster status? Go to Portainer localhost:9010
 ![alt text](https://dl.dropboxusercontent.com/s/79jqvz8bjtna399/Screenshot%202018-07-19%2014.52.25.png?dl=1 'Portainer')
 
 ## Project Templates
