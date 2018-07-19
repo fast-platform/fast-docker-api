@@ -40,10 +40,10 @@ VOLUMES_DRIVER=local
 # - PROJECT_TEMPLATE:         The project template to use 
 #                             (leave empty or use default to us default Form.io template).
 #
-# - ROOT_UERNAME:             The default root account username used 
+# - ROOT_EMAIL:             The default root account username used 
 #                             when installing the Form.io API.
 #
-# - ROOT_PASSWORD:            The default root account password used when 
+# - ROOT_PASS:            The default root account password used when 
 #                             installing the Form.io API.
 #
 ##########################################################################################
@@ -55,7 +55,7 @@ PROJECT_TEMPLATE=default
 USER_FORM=user
 USER_LOGIN_FORM=
 ROOT_EMAIL=admin@example.com
-ROOT_PASSWORD=admin@example.com
+ROOT_PASS=admin@example.com
 
 ##########################################################################################
 # FORM.IO MongoDB Configurations
@@ -212,3 +212,12 @@ OPENCPU_PORT_HTTPS=8086
 
 NETDATA_PORT=19999
 
+##########################################################################################
+# PORTAINER_PORT Configurations
+##########################################################################################
+# 
+# - PORTAINER_PORT:             The PORTAINER port
+# 
+##########################################################################################
+
+PORTAINER_PORT=9010

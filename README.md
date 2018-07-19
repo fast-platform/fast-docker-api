@@ -19,11 +19,11 @@ docker-compose up -d mongo formio portainer opencpu netdata   # fire-up the dock
 
 The file `env-example` is provided as template for setting up the environment variables. Once ready, save it as `.env` to start the full stack
 
-### Docker Configuration
+## Docker Configuration
 
 These are some of the environment variables available for configuring the [Form.io](https://form.io) docker container. Check [env-example](env-example). For more examples check the [custom-environment-variables.json](config/custom-environment-variables.json) to see how they map themselves into the API server configuration.
 
-##### Docker
+### Docker
 
 | Setting         | Description                                           | Example  |
 | --------------- | ----------------------------------------------------- | -------- |
@@ -31,7 +31,7 @@ These are some of the environment variables available for configuring the [Form.
 | NETWORKS_DRIVER | The docker network to attach the container            | `bridge` |
 | VOLUMES_DRIVER  | The volume to attach the containers                   | `local`  |
 
-##### Formio
+### Formio
 
 | Setting                 | Description                                                                                          | Example                                                                                                                          |
 | ----------------------- | ---------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
@@ -52,7 +52,15 @@ These are some of the environment variables available for configuring the [Form.
 | EMAIL_KEY               | The mandrill apiKey string.                                                                          | `mandrill-key`                                                                                                                   |
 | EMAIL_OVERRIDE          | Provides a way to point all Email traffic to a server (ignores all other email configurations).      | `{"transport":"smtp","settings":{"port":2525,"host":"smtp.mailtrap.io","auth":{"user":"23esdffd53ac","pass":"324csdfsdf989a"}}}` |
 
-##### MONGODB
+##### What you get
+
+After the default deploy you will get Form.io Community running on port 3001 (http)
+![alt text](https://www.dropbox.com/s/o4k5t7naupw22kt/Screenshot%202018-07-19%2014.55.52.png?dl=1 'Form.io form builder')
+
+And you will have full access to the Form.io API as usual
+![alt text](https://www.dropbox.com/s/dnk1p6rm1xs7nc1/Screenshot%202018-07-19%2014.56.46.png?dl=1 'Form.io API')
+
+### MONGODB
 
 | Setting             | Description                                 | Example |
 | ------------------- | ------------------------------------------- | ------- |
@@ -63,18 +71,58 @@ These are some of the environment variables available for configuring the [Form.
 | MONGO_DB_USER       | Name of the main user of the created DB     | `user`  |
 | MONGO_DB_PASSWORD   | Password of the main user of the created DB | `user`  |
 
-##### OpenCpu
+##### What you get
+
+After the default deploy you will have MongoDB running on your localhost and port 27017
+![alt text](https://www.dropbox.com/s/nnlwunjuedtn8f4/Screenshot%202018-07-19%2014.53.10.png?dl=1 'MongoDB up and running')
+
+### OpenCpu
 
 | Setting            | Description           | Example |
 | ------------------ | --------------------- | ------- |
 | OPENCPU_PORT_HTTP  | The OpenCpu http port | `8085`  |
 | OPENCPU_PORT_HTTPS | The OpenCpu http port | `8086`  |
 
-##### NetData
+##### What you get
+
+After the default deploy you will have OpenCpu running on port 8085.
+
+You will be able to access the OpenCpu test api using localhost:8085/ocpu
+![alt text](https://www.dropbox.com/s/o90hwvzw0sppq9x/Screenshot%202018-07-19%2014.55.17.png?dl=1 'OpenCpu test api')
+
+Or directly access the OpenCpu Rstudio implementation localhost:8085/rstudio
+Remember that the default credentials for OpenCpu are:
+
+```
+Username: opencpu
+password: opencpu
+```
+
+Don´t forget to change them!
+
+![alt text](https://www.dropbox.com/s/o4k5t7naupw22kt/Screenshot%202018-07-19%2014.55.52.png?dl=1 'OpenCpu RStudio')
+
+### NetData
 
 | Setting      | Description      | Example |
 | ------------ | ---------------- | ------- |
 | NETDATA_PORT | The NetData port | `19999` |
+
+##### What you get
+
+Want to see how your machine is performing? No problem just access Netdata on localhost:19999
+![alt text](https://www.dropbox.com/s/9i1nryvmvpp99jr/Screenshot%202018-07-19%2014.52.44.png?dl=1 'NetData')
+
+### Portainer
+
+| Setting        | Description        | Example |
+| -------------- | ------------------ | ------- |
+| PORTAINER_PORT | The Portainer port | `9000`  |
+
+##### What you get
+
+Want to check your full docker-compose cluster status? Go to Portainer localhost:9000
+![alt text](https://www.dropbox.com/s/79jqvz8bjtna399/Screenshot%202018-07-19%2014.52.25.png?dl=1 'Portainer')
 
 ## Project Templates
 
