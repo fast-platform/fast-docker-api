@@ -37,7 +37,7 @@ docker exec compose_kong_1 /bin/sh -c "
   --data 'path=/ocpu'
 "
 
-echo "Adding Formio Route"
+echo "Adding OpenCpu Route"
 docker exec compose_kong_1 /bin/sh -c "
   curl -i  \
   -X POST \
@@ -46,6 +46,33 @@ docker exec compose_kong_1 /bin/sh -c "
   --data 'preserve_host=false' \
   --data 'paths[]=/opencpu' \
   --data 'methods[]=POST' \
+  --data 'methods[]=GET' \
+  --data 'protocols[]=https' \
+  --data 'protocols[]=http' \
+"
+
+echo "Adding IronFunctions Service"
+docker exec compose_kong_1 /bin/sh -c "
+  curl -i -X POST \
+  --url http://kong:8001/services/ \
+  --data 'host=ironfunctions' \
+  --data 'protocol=http' \
+  --data 'name=IronFunctions' \
+  --data 'port=8080' \
+  --data 'path=/r'
+"
+
+echo "Adding IronFunctions Route"
+docker exec compose_kong_1 /bin/sh -c "
+  curl -i  \
+  -X POST \
+  --url http://kong:8001/services/IronFunctions/routes \
+  --data 'strip_path=true' \
+  --data 'preserve_host=false' \
+  --data 'paths[]=/function' \
+  --data 'methods[]=DELETE' \
+  --data 'methods[]=POST' \
+  --data 'methods[]=PUT' \
   --data 'methods[]=GET' \
   --data 'protocols[]=https' \
   --data 'protocols[]=http' \

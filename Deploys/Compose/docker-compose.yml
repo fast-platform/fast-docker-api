@@ -23,6 +23,7 @@ services:
       - frontend
     environment:
       - "API_URL=http://ironfunctions:8080"
+      - "JWT_AUTH_KEY=${IRONFUNCTIONS_JWT}"
 ### Form.io ##############################################
   formio:
     build: ./Formio
@@ -117,6 +118,34 @@ services:
     networks:
       - backend
       - kong-net
+
+### IronFunctions ########################################
+  ironfunctions:
+    build:
+      context: ./IronFunctions
+    volumes:
+      - ${DATA_PATH_HOST}/ironFunctions_data:/app/data
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - "${IRONFUNCTIONS_PORT}:8080"
+    networks:
+      - backend
+    environment:
+      - "SERVICE_PORTS=${IRONFUNCTIONS_PORT}"
+    restart: unless-stopped
+### IronFunctions UI ########################################
+  ironfunctionsui:
+    build:
+      context: ./IronFunctions/Ui
+    ports:
+      - "${IRONFUNCTIONS_UI_PORT}:4000"
+    networks:
+      - backend
+    environment:
+      - "API_URL=http://ironfunctions:8080"
+    restart: unless-stopped
+    depends_on:
+      - ironfunctions
 ### Portainer ################################################
   portainer:
     build:

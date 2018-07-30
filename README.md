@@ -51,11 +51,11 @@ These are some of the environment variables available for configuring the [Form.
 
 ### Docker
 
-| Setting         | Description                                           | Example                 |
-| --------------- | ----------------------------------------------------- | ----------------------- |
-| DATA_PATH_HOST  | Storage path on your machine. For all storage systems | `../../../data/compose` |
-| NETWORKS_DRIVER | The docker network to attach the container            | `bridge`                |
-| VOLUMES_DRIVER  | The volume to attach the containers                   | `local`                 |
+| Setting         | Description                                           | Example              |
+| --------------- | ----------------------------------------------------- | -------------------- |
+| DATA_PATH_HOST  | Storage path on your machine. For all storage systems | `../../data/compose` |
+| NETWORKS_DRIVER | The docker network to attach the container            | `bridge`             |
+| VOLUMES_DRIVER  | The volume to attach the containers                   | `local`              |
 
 ### Formio
 
