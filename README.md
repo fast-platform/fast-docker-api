@@ -7,8 +7,8 @@ Includes [Form.io](https://form.io)'s open-source [API Server](https://github.co
 ### What is FAST?
 
 FAO SURVEY TECHNOLGY (FAST) is the Food and Agriculture Organization's approach to handle corporate Data Collection and Data Management
-projects in a scalable and reusable fasion. Rather than just going for a single provider approach, we separated every step of the Data Collection process
-to allow the use of plugable/interchable Open Source solutions that will work the same way wether you are using them on a Cloud or On-promise environment (No internet access)
+projects in a scalable and reusable fashion. Rather than just going for a single provider approach, we separated every step of the Data Collection process
+to allow the use of pluggable/interchangeable Open Source solutions that will work the same way whether you are using them on a Cloud or On-premise environment (No internet access)
 
 ### Usage
 
