@@ -2,3 +2,4 @@
 data/
 .vagrant
 Deploys/Compose/.env
+.DS_Store
