@@ -19,7 +19,7 @@ cp env-example ./Deploys/Compose/.env                         # modify and save 
 make deploy-compose                                           # fire-up the docker container
 ```
 
-#### Docker swarm
+#### Docker swarm (under dev)
 
 ![alt text](https://dl.dropboxusercontent.com/s/tiazr9pps67ndbt/docker-swarm.png?dl=1 'Docker swarm')
 
@@ -31,7 +31,7 @@ cd ./fast-docker-api
 make deploy-swarm                                             # fire-up the docker container
 ```
 
-## ARCHITECTURE (ROADMAP)
+## ARCHITECTURE (roadmap)
 
 ![alt text](https://dl.dropboxusercontent.com/s/i1p9k6bv7v3uan6/FAST%20-%20ARCHITECTURE.png?dl=1 'THE FULL PICTURE')
 
