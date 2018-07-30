@@ -2,7 +2,7 @@
 
 ## Full Docker Backend for the FAST project
 
-Includes the [Form.io](https://form.io)'s open-source [API Server](https://github.com/formio/formio) based on Alpine Linux.
+Includes [Form.io](https://form.io)'s open-source [API Server](https://github.com/formio/formio) based on Alpine Linux.
 
 ### Usage
 
