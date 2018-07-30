@@ -6,6 +6,10 @@ Includes [Form.io](https://form.io)'s open-source [API Server](https://github.co
 
 ### Usage
 
+#### Docker compose
+
+![alt text](https://dl.dropboxusercontent.com/s/u8cajiq0nat8uar/docker-compose.png?dl=1 'Docker compose')
+
 To start using this docker container just clone the repository and build it using docker-compose
 
 ```sh
@@ -15,6 +19,9 @@ cp env-example ./Deploys/Compose/.env                         # modify and save 
 sh deploy.sh -e dev -o compose                                # fire-up the docker container
 ```
 
+#### Docker swarm
+
+![alt text](https://dl.dropboxusercontent.com/s/tiazr9pps67ndbt/docker-swarm.png?dl=1 'Docker swarm')
 To start using this docker container with Docker Swarm
 
 ```sh
