@@ -16,7 +16,7 @@ To start using this docker container just clone the repository and build it usin
 git clone https://github.com/un-fao/fast-docker-api.git       # clone the repository
 cd ./fast-docker-api
 cp env-example ./Deploys/Compose/.env                         # modify and save the .env file
-sh deploy.sh -e dev -o compose                                # fire-up the docker container
+make deploy-compose                                           # fire-up the docker container
 ```
 
 #### Docker swarm
@@ -28,7 +28,7 @@ To start using this docker container with Docker Swarm
 ```sh
 git clone https://github.com/un-fao/fast-docker-api.git       # clone the repository
 cd ./fast-docker-api
-sh deploy.sh -e dev -o swarm                                # fire-up the docker container
+make deploy-swarm                                             # fire-up the docker container
 ```
 
 ## THE FULL PICTURE
