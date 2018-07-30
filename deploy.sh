@@ -12,7 +12,7 @@ if [ "$ENV" == "dev" ] && [ "$ORC" == "swarm" ]; then
 	echo "Deploying app with docker swarm";
   sh ./Deploys/Swarm/Scripts/index.sh
 elif [ "$ENV" == "dev" ] && [ "$ORC" == "compose" ]; then
-	echo "Deployinh app with docker compose"
-  cd Deploys/Compose && docker-compose up -d mongo formio portainer opencpu netdata
+	echo "Deploying app with docker compose"
+  sh ./Deploys/Compose/Scripts/index.sh
 fi
 #sh ./deploys/dev.sh

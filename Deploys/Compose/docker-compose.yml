@@ -4,6 +4,8 @@ networks:
     driver: ${NETWORKS_DRIVER}
   backend:
     driver: ${NETWORKS_DRIVER}
+  kong-net:
+    driver: ${NETWORKS_DRIVER}
 
 volumes:
   mongo:
@@ -21,7 +23,6 @@ services:
       - frontend
     environment:
       - "API_URL=http://ironfunctions:8080"
-      - "JWT_AUTH_KEY=${IRONFUNCTIONS_JWT}"
 ### Form.io ##############################################
   formio:
     build: ./Formio
@@ -59,21 +60,63 @@ services:
     networks:
       - backend
     restart: unless-stopped
-### IronFunctions ########################################
-  ironfunctions:
+### KONG DATABASE ################################################
+  kong-database:
     build:
-      context: ./IronFunctions
+      context: ./Kong/database
     volumes:
-      - ${DATA_PATH_HOST}/ironFunctions_data:/app/data
-      - /var/run/docker.sock:/var/run/docker.sock
+      - ${DATA_PATH_HOST}/Cassandra:/var/lib/cassandra
     ports:
-      - "${IRONFUNCTIONS_PORT}:8080"
+      - "${KONG_DATABASE_PORT}:9042"
     networks:
       - backend
+      - kong-net
+### KONG MIGRATIONS ################################################
+  kong-migrations:
+    build:
+      context: ./Kong
+    networks:
+      - backend
+      - kong-net
     environment:
-      - "JWT_AUTH_KEY=${IRONFUNCTIONS_JWT}"
-      - "SERVICE_PORTS=${IRONFUNCTIONS_PORT}"
-    restart: unless-stopped
+      - "KONG_DATABASE=cassandra"
+      - "KONG_PG_HOST=kong-database"
+      - "KONG_CASSANDRA_CONTACT_POINTS=kong-database"
+    command: kong migrations up
+    depends_on:
+      - kong-database
+### KONG SERVICE ################################################
+  kong:
+    build:
+      context: ./Kong
+    networks:
+      - backend
+      - kong-net
+    environment:
+      - "KONG_DATABASE=cassandra"
+      - "KONG_PG_HOST=kong-database"
+      - "KONG_CASSANDRA_CONTACT_POINTS=kong-database"
+      - "KONG_PROXY_ACCESS_LOG=/dev/stdout"
+      - "KONG_ADMIN_ACCESS_LOG=/dev/stdout"
+      - "KONG_PROXY_ERROR_LOG=/dev/stderr"
+      - "KONG_ADMIN_ERROR_LOG=/dev/stderr"
+      - "KONG_ADMIN_LISTEN=0.0.0.0:8001, 0.0.0.0:8444 ssl"
+    ports:
+      - "8000:8000"
+      - "8443:8443"
+      - "8001:8001"
+      - "8444:8444"
+    depends_on:
+      - kong-database
+      - konga
+### KONGA UI ################################################
+  konga:
+    build:
+      context: ./Kong/ui
+    ports:
+      - "1337:1337"
+    networks:
+      - kong-net
 ### Portainer ################################################
   portainer:
     build:

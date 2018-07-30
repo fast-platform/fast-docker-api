@@ -224,12 +224,12 @@ PORTAINER_PORT=9010
 
 
 ##########################################################################################
-# IRON FUNCTIONS Configurations
+# KONG API GATEWAY Configurations
 ##########################################################################################
 # 
-# - IRONFUNCTIONS_PORT:             The IRON FUNCTIONS port
+# - KONG_DATABASE_PORT:             The PORT for the Cassandra DB fro KONG
 # 
 ##########################################################################################
 
-IRONFUNCTIONS_PORT=8010
-IRONFUNCTIONS_JWT=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJGQU8tRkFTVCIsImlhdCI6MTUzMjQ3MTg0NCwiZXhwIjoxNTY0MDA3ODQ0LCJhdWQiOiJ3d3cuZmFvLm9yZyIsInN1YiI6Imp3dHNBY2Nlc3NGb3JJcm9uRnVuY3Rpb25zIiwicm9sZSI6IkFkbWluaXN0cmF0b3IifQ.k6sQKGp3M4_7sRB0Dgz5XMsvyhwuQv4yDrNrnr5xdYQ
+KONG_DATABASE_PORT=9042
+
