@@ -22,6 +22,7 @@ sh deploy.sh -e dev -o compose                                # fire-up the dock
 #### Docker swarm
 
 ![alt text](https://dl.dropboxusercontent.com/s/tiazr9pps67ndbt/docker-swarm.png?dl=1 'Docker swarm')
+
 To start using this docker container with Docker Swarm
 
 ```sh
