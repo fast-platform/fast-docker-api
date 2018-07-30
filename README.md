@@ -23,6 +23,10 @@ cd ./fast-docker-api
 sh deploy.sh -e dev -o swarm                                # fire-up the docker container
 ```
 
+## THE FULL PICTURE
+
+![alt text](https://dl.dropboxusercontent.com//s/pyfeppsdo84ogz3/FAST%20-%20NEXT.png?dl=1 'THE FULL PICTURE')
+
 ## Environment Configuration
 
 The file `env-example` is provided as template for setting up the environment variables. Once ready, save it as `.env` to start the full stack
