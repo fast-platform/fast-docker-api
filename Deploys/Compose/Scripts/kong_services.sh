@@ -25,3 +25,28 @@ docker exec compose_kong_1 /bin/sh -c "
   --data 'protocols[]=https' \
   --data 'protocols[]=http' \
 "
+
+echo "Adding OpenCpu Service"
+docker exec compose_kong_1 /bin/sh -c "
+  curl -i -X POST \
+  --url http://kong:8001/services/ \
+  --data 'host=opencpu' \
+  --data 'protocol=http' \
+  --data 'name=OpenCpu' \
+  --data 'port=80' \
+  --data 'path=/ocpu'
+"
+
+echo "Adding Formio Route"
+docker exec compose_kong_1 /bin/sh -c "
+  curl -i  \
+  -X POST \
+  --url http://kong:8001/services/OpenCpu/routes \
+  --data 'strip_path=true' \
+  --data 'preserve_host=false' \
+  --data 'paths[]=/opencpu' \
+  --data 'methods[]=POST' \
+  --data 'methods[]=GET' \
+  --data 'protocols[]=https' \
+  --data 'protocols[]=http' \
+"
