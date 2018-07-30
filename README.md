@@ -5,9 +5,10 @@
 Includes [Form.io](https://form.io)'s open-source [API Server](https://github.com/formio/formio) based on Alpine Linux.
 
 ### What is FAST?
-FAO SOFTWARE TECHNOLGY (FAST) is the Food and Agriculture Organization's approach to handle corporate Data Collection and Data Management
+
+FAO SURVEY TECHNOLGY (FAST) is the Food and Agriculture Organization's approach to handle corporate Data Collection and Data Management
 projects in a scalable and reusable fasion. Rather than just going for a single provider approach, we separated every step of the Data Collection process
-to allow the use of plugable/interchable Open Source solutions that will work the same way wether you are using them on a Cloud or On-promise environment (No internet access) 
+to allow the use of plugable/interchable Open Source solutions that will work the same way wether you are using them on a Cloud or On-promise environment (No internet access)
 
 ### Usage
 
