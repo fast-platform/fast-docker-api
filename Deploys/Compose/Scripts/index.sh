@@ -11,6 +11,6 @@ echo "Waiting for the migrations to be ready...5segs"
 docker-compose up -d kong konga
  sleep 3
 
-docker-compose up -d formio
+docker-compose up -d formio opencpu portainer netdata
 
 sh ./Scripts/kong_services.sh
