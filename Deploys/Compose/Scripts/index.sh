@@ -1,3 +1,6 @@
+
+source "$(dirname $0)/common.sh"
+
 cd Deploys/Compose && docker-compose up -d kong-database
 
 echo "Waiting for Database to be up...30segs"
@@ -5,4 +8,6 @@ echo "Waiting for Database to be up...30segs"
 docker-compose up kong-migrations 
 echo "Waiting for the migrations to be ready...5segs"
   sleep 5 
-docker-compose up -d kong
+docker-compose up -d kong konga
+ sleep 3
+
