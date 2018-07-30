@@ -31,9 +31,9 @@ cd ./fast-docker-api
 make deploy-swarm                                             # fire-up the docker container
 ```
 
-## THE FULL PICTURE
+## ARCHITECTURE (ROADMAP)
 
-![alt text](https://dl.dropboxusercontent.com/s/zdendasrklag0he/FAST%20-%20FULL%20PICTURE.png?dl=1 'THE FULL PICTURE')
+![alt text](https://dl.dropboxusercontent.com/s/i1p9k6bv7v3uan6/FAST%20-%20ARCHITECTURE.png?dl=1 'THE FULL PICTURE')
 
 ## Environment Configuration
 
