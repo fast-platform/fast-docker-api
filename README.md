@@ -1,6 +1,6 @@
-# Formio API Docker Container
+# Docker suite for the [FAST](https://github.com/UN-FAO) project
 
-## Docker suite for the [FAST](https://github.com/UN-FAO) project
+## Full Docker Backend for the FAST project
 
 Includes the [Form.io](https://form.io)'s open-source [API Server](https://github.com/formio/formio) based on Alpine Linux.
 
