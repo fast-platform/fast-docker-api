@@ -147,6 +147,12 @@ docker exec -it <container_id_or_name> echo "R -e 'install.packages(c("package1"
 
 ![alt text](https://dl.dropboxusercontent.com/s/o4k5t7naupw22kt/Screenshot%202018-07-19%2014.55.52.png?dl=1 'OpenCpu RStudio')
 
+### KONG
+
+All routes for the different services are handeled from Kong API gateway. You can use KONGA UI to manage them or to add more!
+
+![alt text](https://dl.dropboxusercontent.com/s/nwxw6o21a5rtydy/Screenshot%202018-07-30%2016.00.55.png?dl=1 'OpenCpu RStudio')
+
 ### NetData
 
 | Setting      | Description      | Example |
