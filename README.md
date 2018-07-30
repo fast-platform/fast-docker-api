@@ -153,6 +153,9 @@ All routes for the different services are handeled from Kong API gateway. You ca
 
 ![alt text](https://dl.dropboxusercontent.com/s/nwxw6o21a5rtydy/Screenshot%202018-07-30%2016.00.55.png?dl=1 'OpenCpu RStudio')
 
+By doing this, you dont longer query directly the Form.io API server, but use the "/formio" KONG gateway instead
+![alt text](https://dl.dropboxusercontent.com/s/tztvee8h5xxs6mu/Screenshot%202018-07-30%2016.03.38.png?dl=1 'OpenCpu RStudio')
+
 ### NetData
 
 | Setting      | Description      | Example |
