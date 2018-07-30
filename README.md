@@ -25,7 +25,7 @@ sh deploy.sh -e dev -o swarm                                # fire-up the docker
 
 ## THE FULL PICTURE
 
-![alt text](https://dl.dropboxusercontent.com//s/pyfeppsdo84ogz3/FAST%20-%20NEXT.png?dl=1 'THE FULL PICTURE')
+![alt text](https://dl.dropboxusercontent.com/s/pyfeppsdo84ogz3/FAST%20-%20NEXT.png?dl=1 'THE FULL PICTURE')
 
 ## Environment Configuration
 
