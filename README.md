@@ -11,8 +11,16 @@ To start using this docker container just clone the repository and build it usin
 ```sh
 git clone https://github.com/un-fao/fast-docker-api.git       # clone the repository
 cd ./fast-docker-api
-cp env-example ./.env                                         # modify and save the .env file
-docker-compose up -d mongo formio portainer opencpu netdata   # fire-up the docker container
+cp env-example ./Deploys/Compose/.env                         # modify and save the .env file
+sh deploy.sh -e dev -o compose                                # fire-up the docker container
+```
+
+To start using this docker container with Docker Swarm
+
+```sh
+git clone https://github.com/un-fao/fast-docker-api.git       # clone the repository
+cd ./fast-docker-api
+sh deploy.sh -e dev -o swarm                                # fire-up the docker container
 ```
 
 ## Environment Configuration
@@ -25,11 +33,11 @@ These are some of the environment variables available for configuring the [Form.
 
 ### Docker
 
-| Setting         | Description                                           | Example  |
-| --------------- | ----------------------------------------------------- | -------- |
-| DATA_PATH_HOST  | Storage path on your machine. For all storage systems | `./data` |
-| NETWORKS_DRIVER | The docker network to attach the container            | `bridge` |
-| VOLUMES_DRIVER  | The volume to attach the containers                   | `local`  |
+| Setting         | Description                                           | Example                 |
+| --------------- | ----------------------------------------------------- | ----------------------- |
+| DATA_PATH_HOST  | Storage path on your machine. For all storage systems | `../../../data/compose` |
+| NETWORKS_DRIVER | The docker network to attach the container            | `bridge`                |
+| VOLUMES_DRIVER  | The volume to attach the containers                   | `local`                 |
 
 ### Formio
 

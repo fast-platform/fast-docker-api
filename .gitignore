@@ -1,10 +1,4 @@
 # Environment Variables
-.env
-data/*
-# SSL Certificates
-Formio/ssl/*.pem
-Formio/ssl/*.key
-Formio/ssl/*.cer
-
-# Include dev SSL Certificate
-!ssl/*.dev.pem
+data/
+.vagrant
+Deploys/Compose/.env
