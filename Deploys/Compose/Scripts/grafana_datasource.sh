@@ -1,0 +1,1 @@
+curl 'http://grafana:3010/api/datasources' -X PUT --data-binary '{"name":"test","type":"prometheus","url":"http://prometheus:9090","access":"proxy","isDefault":true}'

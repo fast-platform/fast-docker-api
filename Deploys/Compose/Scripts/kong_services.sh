@@ -77,3 +77,11 @@ docker exec compose_kong_1 /bin/sh -c "
   --data 'protocols[]=https' \
   --data 'protocols[]=http' \
 "
+echo "Activating Prometheus globally in KONG"
+docker exec compose_kong_1 /bin/sh -c "
+  curl -i  \
+  -X POST \
+  --url http://kong:8001/plugins/ \
+  --data 'name=prometheus'
+"
+

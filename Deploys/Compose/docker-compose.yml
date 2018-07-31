@@ -52,6 +52,18 @@ services:
     networks:
       - backend
     restart: unless-stopped
+### MongoDB EXPORTER #######################################
+  mongo_exporter:
+    build: ./MongoDB/exporter
+    ports:
+      - "9104:9104"
+    environment:
+      - "MONGODB_URL=mongodb://${MONGO_ROOT_USERNAME}:${MONGO_ROOT_PASSWORD}@mongo:27017"
+    networks:
+      - backend
+    depends_on:
+      - mongo
+    command: "dockerize -wait http://api:80"
 ### OpenCpu #############################################
   opencpu:
     build: ./OpenCpu
@@ -166,4 +178,21 @@ services:
       - "${NETDATA_PORT}:19999"
     networks:
       - backend
-    
+### Prometheus ################################################
+  prometheus:
+    build:
+      context: ./Prometheus
+    ports:
+      - "9090:9090"
+    networks:
+      - backend
+### Grafana ################################################
+  grafana:
+    build:
+      context: ./Grafana
+    ports:
+      - "3010:3000"
+    networks:
+      - backend 
+    volumes:
+      - ${DATA_PATH_HOST}/grafana:/var/lib/grafana
