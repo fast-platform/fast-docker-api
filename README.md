@@ -39,7 +39,7 @@ make deploy-swarm                                             # fire-up the dock
 
 ## ARCHITECTURE (roadmap)
 
-![alt text](https://dl.dropboxusercontent.com/s/i1p9k6bv7v3uan6/FAST%20-%20ARCHITECTURE.png?dl=1 'THE FULL PICTURE')
+![alt text](https://dl.dropboxusercontent.com/s/ur9dmyklt9hi0jc/FAST%20-%20ARCHITECTUREv2.png?dl=1 'THE FULL PICTURE')
 
 ## Environment Configuration
 
