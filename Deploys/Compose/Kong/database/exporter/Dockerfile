@@ -1,6 +1,5 @@
-FROM kong:latest
+FROM wrouesnel/postgres_exporter
 
 LABEL maintainer="Ignacio Cabrera <cabrerabywaters@gmail.com>"
 
-
-EXPOSE 8000 8443 8001 8444
+EXPOSE 9187

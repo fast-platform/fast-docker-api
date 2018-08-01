@@ -1,5 +1,5 @@
-FROM cassandra:3
+FROM postgres:9.6
 
 LABEL maintainer="Ignacio Cabrera <cabrerabywaters@gmail.com>"
 
-EXPOSE 9042
+EXPOSE 5432

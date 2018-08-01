@@ -24,6 +24,7 @@ services:
     environment:
       - "API_URL=http://ironfunctions:8080"
       - "JWT_AUTH_KEY=${IRONFUNCTIONS_JWT}"
+    restart: unless-stopped
 ### Form.io ##############################################
   formio:
     build: ./Formio
@@ -36,6 +37,7 @@ services:
       - backend
     depends_on:
     - mongo
+    restart: unless-stopped
 ### MongoDB ##############################################
   mongo:
     build: ./MongoDB
@@ -64,6 +66,7 @@ services:
     depends_on:
       - mongo
     command: "dockerize -wait http://api:80"
+    restart: unless-stopped
 ### OpenCpu #############################################
   opencpu:
     build: ./OpenCpu
@@ -78,12 +81,26 @@ services:
     build:
       context: ./Kong/database
     volumes:
-      - ${DATA_PATH_HOST}/Cassandra:/var/lib/cassandra
-    ports:
-      - "${KONG_DATABASE_PORT}:9042"
+      - ${DATA_PATH_HOST}/Postgres:/var/lib/postgresql/data
+    ports: 
+      - "5432:5432"
     networks:
       - backend
       - kong-net
+    environment:
+      - "POSTGRES_PASSWORD=kongpassword"
+      - "POSTGRES_USER=kong"
+      - "POSTGRES_DB=kong"
+    restart: unless-stopped
+### KONG DATABASE EXPORTER ################################################
+  kong-database_exporter:
+    build:
+      context: ./Kong/database/exporter
+    environment:
+      - "DATA_SOURCE_NAME=postgresql://kong:kong@kong-database:5432/?sslmode=disable"
+    ports: 
+      - "9187:9187"
+    restart: unless-stopped
 ### KONG MIGRATIONS ################################################
   kong-migrations:
     build:
@@ -92,7 +109,8 @@ services:
       - backend
       - kong-net
     environment:
-      - "KONG_DATABASE=cassandra"
+      - "KONG_DATABASE=postgres"
+      - "KONG_PG_PASSWORD=kongpassword"
       - "KONG_PG_HOST=kong-database"
       - "KONG_CASSANDRA_CONTACT_POINTS=kong-database"
     command: kong migrations up
@@ -106,7 +124,8 @@ services:
       - backend
       - kong-net
     environment:
-      - "KONG_DATABASE=cassandra"
+      - "KONG_DATABASE=postgres"
+      - "KONG_PG_PASSWORD=kongpassword"
       - "KONG_PG_HOST=kong-database"
       - "KONG_CASSANDRA_CONTACT_POINTS=kong-database"
       - "KONG_PROXY_ACCESS_LOG=/dev/stdout"
@@ -121,6 +140,7 @@ services:
       - "8444:8444"
     depends_on:
       - kong-database
+    restart: unless-stopped
 ### KONGA UI ################################################
   konga:
     build:
@@ -130,7 +150,7 @@ services:
     networks:
       - backend
       - kong-net
-
+    restart: unless-stopped
 ### IronFunctions ########################################
   ironfunctions:
     build:
@@ -167,6 +187,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
     ports:
       - "${PORTAINER_PORT}:9000"
+    restart: unless-stopped
 ### NetData ################################################
   netdata:
     image: titpetric/netdata:latest
@@ -178,6 +199,7 @@ services:
       - "${NETDATA_PORT}:19999"
     networks:
       - backend
+    restart: unless-stopped
 ### Prometheus ################################################
   prometheus:
     build:
@@ -186,6 +208,7 @@ services:
       - "9090:9090"
     networks:
       - backend
+    restart: unless-stopped
 ### Grafana ################################################
   grafana:
     build:
@@ -196,3 +219,13 @@ services:
       - backend 
     volumes:
       - ${DATA_PATH_HOST}/grafana:/var/lib/grafana
+    restart: unless-stopped
+### Mailhog #########################################
+  mailhog:
+    build: ./Mailhog
+    ports:
+      - "1025:1025"
+      - "8025:8025"
+    networks:
+      - backend 
+    restart: unless-stopped

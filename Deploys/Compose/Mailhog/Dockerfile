@@ -1,6 +1,7 @@
-FROM kong:latest
+FROM mailhog/mailhog
 
 LABEL maintainer="Ignacio Cabrera <cabrerabywaters@gmail.com>"
 
+CMD ["Mailhog"]
 
-EXPOSE 8000 8443 8001 8444
+EXPOSE 1025 8025

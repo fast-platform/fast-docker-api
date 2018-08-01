@@ -1,8 +1,8 @@
-deploy-compose:
+up:
 	sh ./Deploys/Compose/Scripts/index.sh
-deploy-swarm:
+up-swarm:
 	sh ./Deploys/Swarm/Scripts/index.sh
-destroy:
+down:
 	cd ./Deploys/Compose && docker-compose down
 	rm -rf ./data
 clean:

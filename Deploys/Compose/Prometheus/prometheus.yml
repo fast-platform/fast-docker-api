@@ -11,3 +11,8 @@ scrape_configs:
       static_configs:
         - targets: 
           - 'mongo_exporter:9104'
+    - job_name: 'Postgres'
+      metrics_path: /metrics
+      static_configs:
+        - targets: 
+          - 'kong-database_exporter:9187'
