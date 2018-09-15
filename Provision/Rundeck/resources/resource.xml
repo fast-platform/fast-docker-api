@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+  <node name="FAST-SERVER-1" username="vagrant" description="Manager node for FAST" tags="" hostname="172.28.128.12" ssh-authentication="password" ssh-password-storage-path="keys/FAST/FAST-SERVER-MANGER"/>
+</project>

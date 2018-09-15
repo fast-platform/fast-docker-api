@@ -1,0 +1,26 @@
+{
+  "dockerRootDir": "/var/lib/docker",
+  "enableNetworkPolicy": false,
+  "type": "cluster",
+  "rancherKubernetesEngineConfig": {
+    "addonJobTimeout": 30,
+    "ignoreDockerVersion": true,
+    "sshAgentAuth": false,
+    "type": "rancherKubernetesEngineConfig",
+    "kubernetesVersion": "v1.11.2-rancher1-1",
+    "authentication": { "type": "authnConfig", "strategy": "x509" },
+    "network": { "type": "networkConfig", "plugin": "canal" },
+    "ingress": { "type": "ingressConfig", "provider": "nginx" },
+    "monitoring": { "type": "monitoringConfig", "provider": "metrics-server" },
+    "services": {
+      "type": "rkeConfigServices",
+      "kubeApi": { "podSecurityPolicy": false, "type": "kubeAPIService" },
+      "etcd": {
+        "snapshot": false,
+        "type": "etcdService",
+        "extraArgs": { "heartbeat-interval": 500, "election-timeout": 5000 }
+      }
+    }
+  },
+  "name": "fast"
+}

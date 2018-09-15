@@ -6,14 +6,6 @@ createMachines=no
 source "$(dirname $0)/common.sh"
 echo "We currently are in"
 
-echo "$YELLOW Checking if docker-machine is installed $NC"
-command -v docker-machine >/dev/null 2>&1 || { echo >&2 "$RED FAILED $NC - 'docker-machine' is not installed on this host, please install it.  Aborting."; exit 1; }
-echo "$GREEN OK - $NC 'docker-machine' is installed $NC"
-
-echo "$YELLOW Checking if VirtualBox is installed $NC"
-command -v VBoxManage >/dev/null 2>&1 || { echo >&2 "$RED FAILED $NC - 'VirtualBox' is not installed on this host, please install it.  Aborting."; exit 1; }
-echo "$GREEN OK - $NC VBoxManage is installed $NC"
-
 echo "$YELLOW Checking previous nodes running $NC"
 
 for ((i=1;i<=$NumberOfNodes;i++)); do 

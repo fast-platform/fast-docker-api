@@ -25,6 +25,33 @@ services:
       - "API_URL=http://ironfunctions:8080"
       - "JWT_AUTH_KEY=${IRONFUNCTIONS_JWT}"
     restart: unless-stopped
+### Rundeck #############################################
+  rundeck:
+    build:
+      context: ./Rundeck
+    environment:
+      - "EXTERNAL_SERVER_URL=${RUNDECK_EXTERNAL_SERVER_URL}"
+    ports:
+      - '${RUNDECK_PORT_HTTP}:4440'
+    networks:
+      - backend
+### Rundeck-cli #############################################
+  rundeck-cli:
+    build:
+      context: ./Rundeck/rundeck-cli
+    environment:
+      - "RD_URL=${RUNDECK_CLI_RD_URL}"
+      - "RD_AUTH_PROMPT=${RUNDECK_CLI_RD_AUTH_PROMPT}"
+      - "RD_USER=${RUNDECK_CLI_RD_USER}"
+      - "RD_PASSWORD=${RUNDECK_CLI_RD_PASSWORD}"
+    networks:
+      - backend
+### Cordova #############################################
+  cordova:
+    build:
+      context: ./Cordova
+    volumes:
+      - ${DATA_PATH_HOST}/cordova/app:/tmp/app
 ### Form.io ##############################################
   formio:
     build: ./Formio

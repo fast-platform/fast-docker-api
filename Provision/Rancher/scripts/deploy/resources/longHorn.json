@@ -1,0 +1,17 @@
+{
+  "prune": false,
+  "type": "app",
+  "name": "longhorn",
+  "answers": {
+    "driver": "csi",
+    "persistence.flexvolumePath": "/var/lib/kubelet/volumeplugins",
+    "persistence.defaultClass": "true",
+    "ingress.enabled": "true",
+    "ingress.host": "xip.io",
+    "service.ui.type": "NodePort",
+    "service.ui.nodePort": ""
+  },
+  "targetNamespace": "longhorn-system",
+  "externalId": "catalog://?catalog=library&template=longhorn&version=0.3.0",
+  "projectId": "c-97z64:p-ctnzd"
+}

@@ -1,0 +1,23 @@
+machinePrefix: FAST
+singleNodeDeploy: false
+LOADBALANCER:
+  provider: virtualbox
+  count: 0
+  cpus: 1
+  memory: 512
+  diskSize: 10096
+RANCHER:
+  provider: virtualbox
+  https_port: 443
+  http_port: 80
+  count: 1
+  cpus: 2
+  memory: 2000
+  diskSize: 10096
+  isNode: false
+WORKER:
+  provider: virtualbox
+  count: 1
+  cpus: 2
+  memory: 2000
+  diskSize: 10096
